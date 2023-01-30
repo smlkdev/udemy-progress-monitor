@@ -1,0 +1,25 @@
+{
+  "name": "udemy-progress-monitor",
+  "version": "1.0.0",
+  "description": "Udemy Progress Monitor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/eska-workspace/udemy-progress-monitor.git"
+  },
+  "keywords": [
+    "udemy",
+    "statistics",
+    "progress",
+    "monitor"
+  ],
+  "author": "smlk.dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/eska-workspace/udemy-progress-monitor/issues"
+  },
+  "homepage": "https://gitlab.com/eska-workspace/udemy-progress-monitor#readme"
+}
