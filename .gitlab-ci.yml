@@ -13,7 +13,8 @@ build:
   script:
     # - echo $IMAGE_TAG
     - echo $CI_REGISTRY
-    - ssh -i $ID_RSA deployer@$SERVER echo "ok" > /srv/test
+    - echo $SERVER
+    - ssh -v -i $ID_RSA deployer@$SERVER echo "ok" > /srv/test
     # - echo $CI_REGISTRY_USER
     # - echo $CI_REGISTRY_PASSWORD
     # - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
