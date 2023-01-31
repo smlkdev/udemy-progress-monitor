@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config-name prod",
-    "watch": "webpack --config-name dev"
+    "watch": "webpack --config-name dev",
+    "lint": "eslint ./src --ext .ts"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,9 @@
     "@types/node": "^18.11.18",
     "@types/node-schedule": "^2.1.0",
     "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "eslint": "^8.33.0",
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
@@ -36,6 +40,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
+    "@types/eslint": "^8.4.10",
     "node-schedule": "^2.1.1",
     "winston": "^3.8.2"
   }
