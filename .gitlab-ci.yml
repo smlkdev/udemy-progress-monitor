@@ -1,11 +1,18 @@
 variables:
   REPO_URL: "registry.gitlab.com/eska-workspace/udemy-progress-monitor"
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
 
 stages:
   - build
 
-docker_build:
+build:
+  image: docker:20.10.16
   stage: build
   script:
-  - docker build -t $REPO_URL .
-  - docker push $REPO_URL
+    - echo $IMAGE_TAG
+    - echo $CI_REGISTRY
+    - echo $CI_REGISTRY_USER
+    - echo $CI_REGISTRY_PASSWORD
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
