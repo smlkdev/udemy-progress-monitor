@@ -8,6 +8,8 @@ stages:
 build:
   image: docker:20.10.16
   stage: build
+  services:
+  - docker:20.10.16-dind
   script:
     - echo $IMAGE_TAG
     - echo $CI_REGISTRY
