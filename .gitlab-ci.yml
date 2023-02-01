@@ -34,4 +34,4 @@ deploy:
   script:
     - echo $CI_REGISTRY_USER $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - ssh deployer@$SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
-    - ssh deployer@$SERVER "/src/udemy-progress-monitor/reload.sh $CI_COMMIT_TAG"
+    - ssh deployer@$SERVER "/srv/udemy-progress-monitor/reload.sh $CI_COMMIT_TAG"
