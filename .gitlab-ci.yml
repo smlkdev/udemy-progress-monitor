@@ -3,8 +3,8 @@ before_script:
   - echo "$ID_RSA" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  # - ssh-keyscan $SERVER >> ~/.ssh/known_hosts
-  # - chmod 644 ~/.ssh/known_hosts
+  - ssh-keyscan $SERVER >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
 variables:
   REPO_URL: "registry.gitlab.com/eska-workspace/udemy-progress-monitor"
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
