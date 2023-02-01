@@ -22,7 +22,7 @@ build:
     # - docker push $IMAGE_TAG
 
 deploy:
-  image: ubuntu:22.04
+  image: docker:20.10.23
   stage: deploy
   before_script:
     - eval $(ssh-agent -s)
