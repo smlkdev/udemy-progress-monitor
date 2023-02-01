@@ -32,5 +32,6 @@ deploy:
     - ssh-keyscan "$SERVER" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
+    - echo tag is $CI_COMMIT_REF_SLUG
     - ssh deployer@$SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
     - ssh deployer@$SERVER "/srv/udemy-progress-monitor/reload.sh $CI_COMMIT_REF_SLUG"
