@@ -47,6 +47,7 @@ deploy:
   script:
     - echo tag is $CI_COMMIT_REF_SLUG
     - ssh $USER@$SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+    - ssh $USER@$SERVER "docker pull $IMAGE_TAG"
     - ssh $USER@$SERVER "$RELOAD_PATH $CI_COMMIT_REF_SLUG"
   environment:
     name: production
