@@ -3,8 +3,23 @@ variables:
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
 
 stages:
+  - test
   - build
   - deploy
+
+test_format:
+  image: node:18.13.0-alpine
+  stage: test
+  script:
+  - npm i -D
+  - npm run format:check
+
+test_lint:
+  image: node:18.13.0-alpine
+  stage: test
+  script:
+  - npm i -D
+  - npm run lint
 
 build:
   image: docker:20.10.23
