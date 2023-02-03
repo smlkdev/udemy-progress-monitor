@@ -12,7 +12,7 @@ test_format:
   stage: test
   script:
   - npm i -D
-  - npm run format:check
+  - npm run prettier:check
 
 test_lint:
   image: node:18.13.0-alpine
