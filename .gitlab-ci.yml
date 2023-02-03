@@ -1,6 +1,9 @@
 variables:
-  REPO_URL: "registry.gitlab.com/eska-workspace/udemy-progress-monitor"
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  # images
+  NODE_IMAGE: node:18.13.0-alpine
+  DOCKER_IMAGE: docker:20.10.23
+  DOCKER_DIND_IMAGE: docker:20.10.23-dind
 
 stages:
   - test
@@ -8,31 +11,31 @@ stages:
   - deploy
 
 test_format:
-  image: node:18.13.0-alpine
+  image: $NODE_IMAGE
   stage: test
   script:
     - npm i -D
     - npm run prettier:check
 
 test_lint:
-  image: node:18.13.0-alpine
+  image: $NODE_IMAGE
   stage: test
   script:
     - npm i -D
     - npm run lint
 
 build:
-  image: docker:20.10.23
+  image: $DOCKER_IMAGE
   stage: build
   services:
-    - docker:20.10.23-dind
+    - $DOCKER_DIND_IMAGE
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $IMAGE_TAG .
     - docker push $IMAGE_TAG
 
 deploy:
-  image: docker:20.10.23
+  image: DOCKER_IMAGE
   stage: deploy
   before_script:
     - eval $(ssh-agent -s)
@@ -43,5 +46,7 @@ deploy:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - echo tag is $CI_COMMIT_REF_SLUG
-    - ssh deployer@$SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
-    - ssh deployer@$SERVER "/srv/udemy-progress-monitor/reload.sh $CI_COMMIT_REF_SLUG"
+    - ssh $USER@$SERVER "docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY"
+    - ssh $USER@$SERVER "$RELOAD_PATH $CI_COMMIT_REF_SLUG"
+  environment:
+    name: production
