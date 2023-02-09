@@ -22,7 +22,7 @@ const commonConfig: webpack.Configuration = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
-  target: "node"
+  target: "node",
 };
 
 const devConfig: webpack.Configuration = {
