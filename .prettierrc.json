@@ -1,0 +1,10 @@
+{
+  "printWidth": 120,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": false,
+  "importOrder": ["/configs/(.*)$", "/entities/(.*)$", "/templates/(.*)$", "/utils/(.*)$", "/services/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
