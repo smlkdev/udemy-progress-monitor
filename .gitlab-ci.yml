@@ -54,5 +54,6 @@ deploy:
     - ssh $USER@$SERVER "$RELOAD_PATH $CI_COMMIT_REF_SLUG"
   rules:
     - if: $CI_COMMIT_TAG =~ /^v(\d)+/
+  when: manual
   environment:
     name: production
