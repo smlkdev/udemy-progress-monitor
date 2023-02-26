@@ -3,7 +3,7 @@ import * as path from "path";
 
 const commonConfig: webpack.Configuration = {
   entry: {
-    app: "./src/app.ts",
+    app: "./src/index.ts",
   },
   module: {
     rules: [
@@ -12,6 +12,10 @@ const commonConfig: webpack.Configuration = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.mustache?$/,
+        use: "raw-loader"
+      }
     ],
   },
   resolve: {
