@@ -1,0 +1,19 @@
+# Progress details for `{{id}}`
+
+## About the course
+
+key | value
+:-- | :--
+title | {{title}}
+author | {{instructor}}
+
+## Progress boxes
+{{#curriculum}}{{^isChapter}}{{#finished}}:green_square:{{/finished}}{{^finished}}:white_large_square:{{/finished}} {{/isChapter}}{{/curriculum}}
+
+## Curriculum list
+
+{{#curriculum}}
+{{#isChapter}}* **{{title}}**{{/isChapter}}
+
+{{^isChapter}}  - [{{#finished}}x{{/finished}}{{^finished}} {{/finished}}] {{title}}{{#finished}} :green_circle:{{/finished}}{{/isChapter}}
+{{/curriculum}}

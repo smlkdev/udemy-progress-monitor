@@ -1,0 +1,33 @@
+# udemy-stats
+
+The personal learning statistics shown below were committed automatically using [udemy-progress-monitor](https://github.com/smlkdev/udemy-progress-monitor)
+
+- :green_circle: `Finished courses` **`({{ coursesCount.finished }})`**
+- :yellow_circle: `Pending courses` **`({{ coursesCount.pending }})`**
+- :red_circle: `Not yet started` **`({{ coursesCount.notStarted }})`**
+
+## :green_circle: Finished courses
+| course name | progress | details | %bar |
+| :---------- | :------: | :-----: | :---------: |
+{{#details.finished}}
+{{ > row }}
+{{/details.finished}}
+
+## :yellow_circle: Pending courses
+| course name | progress | details | %bar |
+| :---------- | :------: | :-----: | :---------: |
+{{#details.pending}}
+{{ > row }}
+{{/details.pending}}
+
+## :red_circle: Not yet started
+| course name | progress | details | %bar |
+| :---------- | :------: | :-----: | :---------: |
+{{#details.notStarted}}
+{{ > row }}
+{{/details.notStarted}}
+
+{{^details.notStarted}}
+
+No courses
+{{/details.notStarted}}
