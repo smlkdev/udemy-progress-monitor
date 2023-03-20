@@ -1,7 +1,7 @@
 const config = {
   github: {
     workBranch: "heads/master",
-    announcementRule: "*/1 * * * *",
+    announcementRule: "*/5 * * * *",
     pushDelay: 1800,
   },
   logger: {
@@ -10,7 +10,7 @@ const config = {
   app: {
     ignoredKeys: ["image"],
     tocPath: "README.md",
-    syncRule: "*/5 * * * *",
+    syncRule: "*/20 * * * *",
   },
 };
 
