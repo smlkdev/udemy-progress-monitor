@@ -50,13 +50,17 @@ export class Course {
   }
 
   private convertInfo(data: CourseInfoResponse) {
-    this.title = data.title;
+    this.title = this.removeUnwantedChars(data.title);
     this.image = data.image_125_H;
-    this.publishedTitle = data.published_title;
+    this.publishedTitle = this.removeUnwantedChars(data.published_title);
     // take the shortest name for the instructor
-    this.instructor = data.visible_instructors.sort(
-      (a, b) => a.display_name.length - b.display_name.length
-    )[0].display_name;
+    this.instructor = this.removeUnwantedChars(
+      data.visible_instructors.sort((a, b) => a.display_name.length - b.display_name.length)[0].display_name
+    );
+  }
+
+  private removeUnwantedChars(text: string) {
+    return text.replace(/\|/g, "");
   }
 
   private convertProgress(data: CourseProgressResponse) {
