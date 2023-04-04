@@ -49,8 +49,9 @@ class App {
   }
 
   private createSyncSchedule() {
-    for (const { id } of this.courses) {
-      const job = scheduler.scheduleJob(id.toString(), config.app.syncRule, () => this.sync(id));
+    for (const { id, firstCompletionTime } of this.courses) {
+      const syncRule = firstCompletionTime ? config.app.syncRuleCompletedCourse : config.app.syncRule;
+      const job = scheduler.scheduleJob(id.toString(), syncRule, () => this.sync(id));
       job.invoke();
     }
   }

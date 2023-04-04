@@ -11,6 +11,7 @@ const config = {
     ignoredKeys: ["image"],
     tocPath: "README.md",
     syncRule: "*/20 * * * *",
+    syncRuleCompletedCourse: "0 0 * * *",
   },
 };
 
